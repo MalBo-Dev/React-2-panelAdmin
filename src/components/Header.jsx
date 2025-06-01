@@ -1,66 +1,123 @@
 import React from "react";
 
-const NavItem = ({ href, label, active }) => (
-  <li className={`nav-item ${active ? "active pl-0" : ""}`}>
-    <a className={`nav-link p-0 ${active ? "is-active" : ""}`} href={href}>
-      {label} {active && <span className="sr-only">(current)</span>}
-    </a>
-  </li>
-);
-
 const Header = () => {
-  const navLinks = [
-    { href: "index.html", label: "Home", active: true },
-    { href: "#service-con", label: "Services" },
-    { href: "#about-con", label: "About" },
-    { href: "#Portfolio", label: "Portfolio" },
-    { href: "#testimonials", label: "Testimonials" },
-    { href: "#blog", label: "Blog" },
-  ];
-
   return (
-    <header className="main-header">
-      <div className="container pl-0 pr-0">
-        <div className="header-con">
-          <nav className="navbar navbar-expand-lg navbar-light p-0">
-            <a className="navbar-brand p-0" href="index.html">
-              <img
-                src="src/assets/image/logo-img.png"
-                alt="logo-img"
-                className="img-fluid"
-              />
+    <header className="topbar" data-navbarbg="skin6">
+      <nav className="navbar top-navbar navbar-expand-md navbar-light">
+        <div className="navbar-header" data-logobg="skin5">
+          <a className="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)">
+            <i className="ti-menu ti-close"></i>
+          </a>
+
+          <div className="navbar-brand">
+            <a href="index.html" className="logo">
+              <b className="logo-icon">
+                <img src="../../assets/images/logo-icon.png" alt="homepage" className="dark-logo" />
+                <img src="../../assets/images/logo-light-icon.png" alt="homepage" className="light-logo" />
+              </b>
+              <span className="logo-text">
+                <img src="../../assets/images/logo-text.png" alt="homepage" className="dark-logo" />
+                <img src="../../assets/images/logo-light-text.png" className="light-logo" alt="homepage" />
+              </span>
             </a>
-
-            <button
-              className="navbar-toggler p-0 collapsed"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
+            <a
+              className="sidebartoggler d-none d-md-block"
+              href="javascript:void(0)"
+              data-sidebartype="mini-sidebar"
             >
-              <span className="navbar-toggler-icon"></span>
-              <span className="navbar-toggler-icon"></span>
-              <span className="navbar-toggler-icon"></span>
-            </button>
+              <i className="mdi mdi-toggle-switch mdi-toggle-switch-off font-20"></i>
+            </a>
+          </div>
 
-            <div
-              className="collapse navbar-collapse justify-content-end"
-              id="navbarSupportedContent"
-            >
-              <ul className="navbar-nav ml-auto">
-                {navLinks.map(({ href, label, active }, idx) => (
-                  <NavItem key={idx} href={href} label={label} active={active} />
-                ))}
-              </ul>
-              <div className="d-inline-block contact">
-                <a href="#Contact">Contact</a>
-              </div>
-            </div>
-          </nav>
+          <a
+            className="topbartoggler d-block d-md-none waves-effect waves-light"
+            href="javascript:void(0)"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i className="ti-more"></i>
+          </a>
         </div>
-      </div>
+
+        <div className="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin6">
+          <ul className="navbar-nav float-left mr-auto">
+            <li className="nav-item search-box">
+              <a className="nav-link waves-effect waves-dark" href="javascript:void(0)">
+                <div className="d-flex align-items-center">
+                  <i className="mdi mdi-magnify font-20 mr-1"></i>
+                  <div className="ml-1 d-none d-sm-block">
+                    <span>Search</span>
+                  </div>
+                </div>
+              </a>
+              <form className="app-search position-absolute">
+                <input type="text" className="form-control" placeholder="Search & enter" />
+                <a className="srh-btn">
+                  <i className="ti-close"></i>
+                </a>
+              </form>
+            </li>
+          </ul>
+
+          <ul className="navbar-nav float-right">
+
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle waves-effect waves-dark pro-pic"
+                href="#"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <img src="../../assets/images/users/2.jpg" alt="user" className="rounded-circle" width="40" />
+                <span className="m-l-5 font-medium d-none d-sm-inline-block">
+                  Jonathan Doe <i className="mdi mdi-chevron-down"></i>
+                </span>
+              </a>
+              <div className="dropdown-menu dropdown-menu-right user-dd animated flipInY">
+                <span className="with-arrow">
+                  <span className="bg-primary"></span>
+                </span>
+                <div className="d-flex no-block align-items-center p-15 bg-primary text-white m-b-10">
+                  <div>
+                    <img src="../../assets/images/users/2.jpg" alt="user" className="rounded-circle" width="60" />
+                  </div>
+                  <div className="m-l-10">
+                    <h4 className="mb-0">Jonathan Doe</h4>
+                    <p className="mb-0">jon@gmail.com</p>
+                  </div>
+                </div>
+                <a className="dropdown-item" href="javascript:void(0)">
+                  <i className="ti-user m-r-5 m-l-5"></i> My Profile
+                </a>
+                <a className="dropdown-item" href="javascript:void(0)">
+                  <i className="ti-wallet m-r-5 m-l-5"></i> My Balance
+                </a>
+                <a className="dropdown-item" href="javascript:void(0)">
+                  <i className="ti-email m-r-5 m-l-5"></i> Inbox
+                </a>
+                <div className="dropdown-divider"></div>
+                <a className="dropdown-item" href="javascript:void(0)">
+                  <i className="ti-settings m-r-5 m-l-5"></i> Account Setting
+                </a>
+                <div className="dropdown-divider"></div>
+                <a className="dropdown-item" href="javascript:void(0)">
+                  <i className="fa fa-power-off m-r-5 m-l-5"></i> Logout
+                </a>
+                <div className="dropdown-divider"></div>
+                <div className="p-l-30 p-10">
+                  <a href="javascript:void(0)" className="btn btn-sm btn-success btn-rounded">
+                    View Profile
+                  </a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </header>
   );
 };
